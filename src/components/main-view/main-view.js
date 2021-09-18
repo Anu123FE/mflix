@@ -3,8 +3,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import Login from "../login-view/login";
 import Register from "../register-view/register";
-import { Row, Container, Col } from "react-bootstrap";
-
+import { Row, Container, Col, CardGroup } from "react-bootstrap";
+import "./main-view.css";
 
 class MainView extends React.Component {
   state = {
@@ -58,16 +58,15 @@ class MainView extends React.Component {
     return (
       <Container>
       <div className="main-view">
+        <div className="cardGroup">
         {selectedMovie
-          ? <Row>
-            <Col>
-          <MovieView movie={selectedMovie} OnClickBack={newSelectedMovie => { this.setMovieSelected(newSelectedMovie); }}/>
-          </Col>
-          </Row>
+          ? <MovieView movie={selectedMovie} OnClickBack={newSelectedMovie => { this.setMovieSelected(newSelectedMovie); }}/>
           : movies.map((movie, index) => (
             <MovieCard key={index} movie={movie} onMovieClick={(movie) => { this.setMovieSelected(movie) }}/>
+           
           ))
         }
+        </div>
       </div>
       </Container>
     );
