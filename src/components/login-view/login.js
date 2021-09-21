@@ -3,15 +3,30 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col} from 'react-bootstrap';
 import HeaderNav from '../header/headerNav';
+import axios from 'axios';
+import { useHistory } from 'react-router';
 
 export function Login(props) {
+  const history = useHistory();
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
   
     const handleSubmit = (e) => {
       e.preventDefault();
       console.log(username, password);
-      props.onLoggedIn(username);
+      axios.post("https://movie-api-v001.herokuapp.com/login", {
+        Username: username,
+        Password: password
+      })
+      .then(response => {
+        const data = response.data;
+        console.log(data)
+        localStorage.setItem("token", data.token)
+        history.push("/movies")
+      })
+      .catch(e => {
+        console.log('no such user')
+      });
     };
 
         return (

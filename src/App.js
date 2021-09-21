@@ -19,6 +19,9 @@ function App() {
      <Route exact={true} path="/register">
        <Register></Register>
      </Route>
+     <Route exact={true} path="/movies">
+       <MainView></MainView>
+     </Route>
     </BrowserRouter>
    
     

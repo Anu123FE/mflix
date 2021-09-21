@@ -5,6 +5,9 @@ import Login from "../login-view/login";
 import Register from "../register-view/register";
 import { Row, Container, Col, CardGroup } from "react-bootstrap";
 import "./main-view.css";
+import { Link } from 'react-router-dom';
+import Nav from "react-bootstrap/Nav";
+import axios from "axios";
 
 class MainView extends React.Component {
   state = {
@@ -25,6 +28,21 @@ class MainView extends React.Component {
     .catch(err=>console.log(err))
   }
 
+  getMovies(token) {
+    axios.get("https://movie-api-v001.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   setRegistered(register){
     this.setState({
       register
@@ -43,20 +61,31 @@ class MainView extends React.Component {
     });
   }
 
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
+
+
   render() {
     
     const { movies, selectedMovie, register, loggedIn } = this.state;
-    console.log(this.state)
-    if(!register) { 
-      return (<Register onRegistration={register => this.setRegistered(register)}></Register>)
-    }
-
-    if(!loggedIn) {
-      return (<Login onLoggedIn={loggedIn => this.setLoggedIn(loggedIn)}></Login>)
-    }
 
     return (
       <Container>
+        <Nav variant="pills" className="justify-content-end" defaultActiveKey="/home">
+           <Nav.Item>
+                <Nav.Link href="#profile"><Link to="/">Edit Profile</Link></Nav.Link>
+           </Nav.Item>
+           <Nav.Item>
+                 <Nav.Link eventKey="#logout"> <Link to="/">Log out</Link></Nav.Link>
+            </Nav.Item>
+         </Nav>
+
       <div className="main-view">
         <div className="cardGroup">
         {selectedMovie
