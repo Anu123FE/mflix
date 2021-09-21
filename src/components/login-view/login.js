@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col} from 'react-bootstrap';
+import HeaderNav from '../header/headerNav';
 
 export function Login(props) {
     const [ username, setUsername ] = useState("");
@@ -15,6 +16,7 @@ export function Login(props) {
 
         return (
           <Container> 
+              <HeaderNav></HeaderNav>
             <Form>
               <Row className="justify-content-md-center">
                 <Col md={8}>

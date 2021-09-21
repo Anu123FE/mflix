@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Row, Col, Container } from 'react-bootstrap';
+import HeaderNav from '../header/headerNav';
 
 export function Register(props) {
     const [ username, setUsername ] = useState("");
@@ -17,6 +18,7 @@ export function Register(props) {
 
         return (
           <Container>
+               <HeaderNav></HeaderNav>
        <Form>
          <Row>
            <Col>
