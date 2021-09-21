@@ -3,17 +3,33 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Row, Col, Container } from 'react-bootstrap';
 import HeaderNav from '../header/headerNav';
+import axios from 'axios';
+import { useHistory } from 'react-router';
 
 export function Register(props) {
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ birthday, setBirthday ] = useState("");
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username, password, email, birthday);
-        props.onRegistration(username);
+        axios.post("https://movie-api-v001.herokuapp.com/users/register", {
+          Username: username,
+          Password: password,
+          Email: email,
+          Birthday: birthday,
+        })
+        .then(response => {
+          const data = response.data;
+          console.log(data)
+          history.push("/")
+          })
+        .catch(e => {
+          console.log('Error during registration!')
+        });
       };
 
         return (
