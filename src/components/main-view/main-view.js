@@ -64,9 +64,7 @@ class MainView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.setState({
-      user: null
-    });
+   
   }
 
 
@@ -82,7 +80,7 @@ class MainView extends React.Component {
                 <Nav.Link href="#profile"><Link to="/">Edit Profile</Link></Nav.Link>
            </Nav.Item>
            <Nav.Item>
-                 <Nav.Link eventKey="#logout"> <Link to="/">Log out</Link></Nav.Link>
+                 <Nav.Link eventKey="#logout"> <Link onClick={this.onLoggedOut} to="/">Log out</Link></Nav.Link>
             </Nav.Item>
          </Nav>
 
