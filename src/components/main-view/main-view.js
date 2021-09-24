@@ -75,9 +75,16 @@ class MainView extends React.Component {
 
     return (
       <Container>
+
         <Nav variant="pills" className="justify-content-end" defaultActiveKey="/home">
+        <Nav.Item>
+                <Nav.Link href="#profile"><Link to="/movies">Movies</Link></Nav.Link>
+          </Nav.Item>
+        <Nav.Item>
+                <Nav.Link href="#profile"><Link to="/view-profile">View Profile</Link></Nav.Link>
+           </Nav.Item>
            <Nav.Item>
-                <Nav.Link href="#profile"><Link to="/">Edit Profile</Link></Nav.Link>
+                <Nav.Link href="#profile"><Link to="/edit-profile">Edit Profile</Link></Nav.Link>
            </Nav.Item>
            <Nav.Item>
                  <Nav.Link eventKey="#logout"> <Link onClick={this.onLoggedOut} to="/">Log out</Link></Nav.Link>

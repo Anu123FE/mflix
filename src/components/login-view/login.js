@@ -22,6 +22,7 @@ export function Login(props) {
         const data = response.data;
         console.log(data)
         localStorage.setItem("token", data.token)
+        localStorage.setItem("user", data.user.Username)
         history.push("/movies")
       })
       .catch(e => {

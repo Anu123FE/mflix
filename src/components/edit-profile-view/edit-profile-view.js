@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 
-class ProfileView extends React.Component {
+class EditProfileView extends React.Component {
   state = {
     user: {}
   }
@@ -43,16 +43,25 @@ class ProfileView extends React.Component {
                 <Nav.Link href="#profile"><Link to="/view-profile">View Profile</Link></Nav.Link>
            </Nav.Item>
            <Nav.Item>
-                <Nav.Link href="#profile"><Link to="/edit-profile">Edit Profile</Link></Nav.Link>
+                <Nav.Link href="#profile"><Link to="/">Edit Profile</Link></Nav.Link>
            </Nav.Item>
            <Nav.Item>
                  <Nav.Link eventKey="#logout"> <Link onClick={this.onLoggedOut} to="/">Log out</Link></Nav.Link>
             </Nav.Item>
          </Nav>
          </Nav>
-         <h1>{this.state.user.Username}</h1>
-         <h1>{this.state.user.Email}</h1>
-         <h1>{this.state.user.Birthday}</h1>
+         <form>
+
+Username: <input type="text" value={this.state.user.Username}></input>
+<br></br>
+Email: <input type="text" value={this.state.user.Email}></input>
+<br></br>
+Birthday: <input type="text" value={this.state.user.Birthday}></input>
+<br></br>
+<input type="button" value="Edit"></input>
+          
+ </form> 
+        
  </Container>
 </div>
     );
@@ -60,4 +69,4 @@ class ProfileView extends React.Component {
   }
 }
 
-export default ProfileView;
+export default EditProfileView;

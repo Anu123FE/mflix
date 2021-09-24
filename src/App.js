@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Register from './components/register-view/register';
 import Login from './components/login-view/login';
 import { BrowserRouter, Route } from 'react-router-dom';
+import ProfileView from './components/profile-view/profile-view';
+import EditProfileView from './components/edit-profile-view/edit-profile-view';
 
 
 
@@ -21,6 +23,12 @@ function App() {
      </Route>
      <Route exact={true} path="/movies">
        <MainView></MainView>
+     </Route>
+     <Route exact={true} path="/view-profile">
+     <ProfileView></ProfileView>
+     </Route>
+     <Route exact={true} path="/edit-profile">
+   <EditProfileView></EditProfileView>
      </Route>
     </BrowserRouter>
    
