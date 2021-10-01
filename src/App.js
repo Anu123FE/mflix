@@ -8,6 +8,7 @@ import Login from './components/login-view/login';
 import { BrowserRouter, Route } from 'react-router-dom';
 import ProfileView from './components/profile-view/profile-view';
 import EditProfileView from './components/edit-profile-view/edit-profile-view';
+import { MovieView } from './components/movie-view/movie-view';
 
 
 
