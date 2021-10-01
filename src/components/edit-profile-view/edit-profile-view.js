@@ -9,22 +9,57 @@ import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 
 class EditProfileView extends React.Component {
-  state = {
-    user: {}
+   state = {
+    user: "",
+    Username: "",
+    Email: "",
+    Birthday: "",
+    Password: ""
+  }
+
+  setInput(evt){
+    const {name, value} = evt.target;
+    this.setState({
+      [name]: value
+    })
   }
 
   componentDidMount(){
     axios.get(`https://movie-api-v001.herokuapp.com/user/${localStorage.getItem("user")}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}
+        headers: { 'Access-Control-Allow-Origin': "*", Authorization: `Bearer ${localStorage.getItem("token")}`}
     })
     .then(response=>{
         console.log(response.data)
       this.setState({
-        user: response.data
+        Username: response.data.Username,
+        Email: response.data.Email,
+        Password: response.data.Password,
+        Birthday: response.data.Birthday,
+        Password: response.data.Password
       });
     })
     .catch(err=>console.log(err))
   }
+
+   handleSubmit = (e) => {
+    e.preventDefault();
+ 
+    axios.put("https://movie-api-v001.herokuapp.com/users/"+localStorage.getItem("user"), {
+      Username: this.state.Username,
+      Password: this.state.Password,
+      Email: this.state.Email,
+      Birthday: this.state.Birthday,
+    }, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data)
+      })
+    .catch(e => {
+      console.log('Error during update!')
+    });
+  };
 
   render() {
     
@@ -52,13 +87,15 @@ class EditProfileView extends React.Component {
          </Nav>
          <form>
 
-Username: <input type="text" value={this.state.user.Username}></input>
+Username: <input name="Username" type="text" value={this.state.Username} onChange={e => this.setInput(e)}></input>
 <br></br>
-Email: <input type="text" value={this.state.user.Email}></input>
+Email: <input name="Email" type="text" value={this.state.Email} onChange={e => this.setInput(e)}></input>
 <br></br>
-Birthday: <input type="text" value={this.state.user.Birthday}></input>
+Password: <input name="Password" type="password" value={this.state.Password} onChange={e => this.setInput(e)}></input>
 <br></br>
-<input type="button" value="Edit"></input>
+Birthday: <input name="Birthday" type="text" value={this.state.Birthday} onChange={e => this.setInput(e)}></input>
+<br></br>
+<input type="button" value="Edit" onClick={this.handleSubmit}></input>
           
  </form> 
         
