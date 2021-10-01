@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 export class MovieView extends React.Component {
@@ -28,7 +29,7 @@ export class MovieView extends React.Component {
            <Col>
         <div className="movie-genre">
           <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
+          <span className="value"><Link to="">{movie.Genre.Name}</Link></span>
         </div>
         </Col>
         </Row>
@@ -37,7 +38,7 @@ export class MovieView extends React.Component {
           <Col>
         <div className="movie-director">
           <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
+          <span className="value"><Link to="">{movie.Director.Name}</Link></span>
         </div>
         </Col>
         </Row>
