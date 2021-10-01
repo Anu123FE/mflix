@@ -61,6 +61,16 @@ class EditProfileView extends React.Component {
     });
   };
 
+  deregister = () => {
+    axios.delete("https://movie-api-v001.herokuapp.com/users/"+localStorage.getItem("user"))
+    .then(response => {
+     if(response.status === 2000) alert("Deleted!")
+      })
+    .catch(e => {
+      console.log('Error during update!')
+    });
+  }
+
   render() {
     
 
@@ -99,6 +109,8 @@ Birthday: <input name="Birthday" type="text" value={this.state.Birthday} onChang
           
  </form> 
         
+        <br></br>
+        <input type="button" value="De-register" onClick={this.deregister}></input>
  </Container>
 </div>
     );
