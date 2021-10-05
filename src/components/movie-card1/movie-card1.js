@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 export class MovieCard1 extends React.Component {
   removeFav = (id) => {
     const token = localStorage.getItem("token");
-    axios.delete(`https://movie-api-v001.herokuapp.com/users/${localStorage.getItem("user")}/movies/${id}`, {}, {
+    axios.delete(`https://movie-api-v001.herokuapp.com/users/${localStorage.getItem("user")}/movies/${id}`, {
       headers: { Authorization: `Bearer ${token}`} 
   })
     .then(response => {
