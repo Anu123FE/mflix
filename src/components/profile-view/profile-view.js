@@ -1,5 +1,5 @@
 import React from "react";
-import { MovieCard } from "../movie-card/movie-card";
+import { MovieCard1 } from "../movie-card1/movie-card1";
 import { MovieView } from "../movie-view/movie-view";
 import Login from "../login-view/login";
 import Register from "../register-view/register";
@@ -10,7 +10,8 @@ import axios from "axios";
 
 class ProfileView extends React.Component {
   state = {
-    user: {}
+    user: {},
+    fav: []
   }
 
   componentDidMount(){
@@ -19,6 +20,22 @@ class ProfileView extends React.Component {
     })
     .then(response=>{
         console.log(response.data)
+        axios.get(`https://movie-api-v001.herokuapp.com/movies`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}
+    }).then(response1 => {
+      const u = [];
+      console.log(response1.data)
+      response.data.FavoriteMovies.forEach(y=>{
+        const m = response1.data.find(x=>x._id == y)
+        u.push(m)
+        console.log(u)
+        this.setState({
+          fav: [...u]
+        })
+      })
+      
+    }).catch(err=>console.log(err))
+
       this.setState({
         user: response.data
       });
@@ -53,7 +70,14 @@ class ProfileView extends React.Component {
          <h1>{this.state.user.Username}</h1>
          <h1>{this.state.user.Email}</h1>
          <h1>{this.state.user.Birthday}</h1>
- </Container>
+         <br></br>
+         <h1>Favorite movies</h1>
+         {this.state.fav.map((movie, index) => (
+            <MovieCard1 key={index} movie={movie} onMovieClick={(movie) => { this.setMovieSelected(movie) }}/>
+         )
+         )}
+         
+         </Container>
 </div>
     );
 
