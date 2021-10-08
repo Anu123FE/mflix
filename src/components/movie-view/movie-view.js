@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 export class MovieView extends React.Component {
   render() {
     const { movie, OnClickBack } = this.props;
-    const url=`https://en.wikipedia.org/wiki/${movie.Genre.Name}_(genre)`;
-    const directorUrl=`https://en.wikipedia.org/wiki/${movie.Director.Name}_(director)`;
+    const url=`genre/${movie.Genre.Name}`;
+    const directorUrl=`director/${movie.Director.Name}`;
     console.log(movie)
     return (
       <Container>
