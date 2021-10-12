@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import Button from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import {MovieCard1} from "../movie-card1/movie-card1";
 import Card from "react-bootstrap/Card";
 
 export class GenreView extends React.Component {
@@ -31,8 +29,7 @@ export class GenreView extends React.Component {
     });
   }
   render() {
-    const { movie, onBackClick } = this.props;
-
+    
     return (
       <div className="genre-view">
 
@@ -50,11 +47,12 @@ export class GenreView extends React.Component {
         <div>
         {
             this.state.movies.map((x)=>{
+              const image = window.location.href.split("/")[0] + "/" + x.ImagePath;
               return (
                
                 <Card>
                 <div>
-                <img width="250" height="250" src={this.url+x.ImagePath}/>
+                <img alt={x.Title} width="250" height="250" src={image}/>
                 </div>
                <Card.Body>
                  <Card.Title>{x.Title}</Card.Title>

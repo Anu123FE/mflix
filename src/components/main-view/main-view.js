@@ -1,9 +1,7 @@
 import React from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import Login from "../login-view/login";
-import Register from "../register-view/register";
-import { Row, Container, Col, CardGroup } from "react-bootstrap";
+import {  Container } from "react-bootstrap";
 import "./main-view.css";
 import { Link } from 'react-router-dom';
 import Nav from "react-bootstrap/Nav";
@@ -12,9 +10,6 @@ import axios from "axios";
 class MainView extends React.Component {
   state = {
     movies: []
-  }
-  constructor() {
-    super();
   }
 
   componentDidMount(){
@@ -71,7 +66,7 @@ class MainView extends React.Component {
 
   render() {
     
-    const { movies, selectedMovie, register, loggedIn } = this.state;
+    const { movies, selectedMovie } = this.state;
 
     return (
       <Container>

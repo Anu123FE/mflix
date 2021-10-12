@@ -1,9 +1,6 @@
 import React from "react";
 import { MovieCard1 } from "../movie-card1/movie-card1";
-import { MovieView } from "../movie-view/movie-view";
-import Login from "../login-view/login";
-import Register from "../register-view/register";
-import { Row, Container, Col, CardGroup } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
@@ -26,7 +23,7 @@ class ProfileView extends React.Component {
       const u = [];
       console.log(response1.data)
       response.data.FavoriteMovies.forEach(y=>{
-        const m = response1.data.find(x=>x._id == y)
+        const m = response1.data.find(x=>x._id === y)
         u.push(m)
         console.log(u)
         this.setState({

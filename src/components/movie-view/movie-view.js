@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component {
   render() {
@@ -14,7 +13,7 @@ export class MovieView extends React.Component {
               <Row>
                    <Col xs={12} md={6}>
                        <div className="movie-poster">
-                          <img src={movie.ImagePath}/>
+                          <img alt={movie.Title} src={movie.ImagePath}/>
                        </div>
                     </Col>
               </Row>
