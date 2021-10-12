@@ -1,15 +1,15 @@
 import React from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import Login from "../login-view/login";
-import Register from "../register-view/register";
+import {  Container } from "react-bootstrap";
+import "./main-view.css";
+import { Link } from 'react-router-dom';
+import Nav from "react-bootstrap/Nav";
+import axios from "axios";
 
 class MainView extends React.Component {
   state = {
     movies: []
-  }
-  constructor() {
-    super();
   }
 
   componentDidMount(){
@@ -21,6 +21,21 @@ class MainView extends React.Component {
       });
     })
     .catch(err=>console.log(err))
+  }
+
+  getMovies(token) {
+    axios.get("https://movie-api-v001.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   setRegistered(register){
@@ -41,27 +56,48 @@ class MainView extends React.Component {
     });
   }
 
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+   
+  }
+
+
+
   render() {
     
-    const { movies, selectedMovie, register, loggedIn } = this.state;
-    console.log(this.state)
-    if(!register) { 
-      return (<Register onRegistration={register => this.setRegistered(register)}></Register>)
-    }
-
-    if(!loggedIn) {
-      return (<Login onLoggedIn={loggedIn => this.setLoggedIn(loggedIn)}></Login>)
-    }
+    const { movies, selectedMovie } = this.state;
 
     return (
+      <Container>
+
+        <Nav variant="pills" className="justify-content-end" defaultActiveKey="/home">
+        <Nav.Item>
+                <Nav.Link href="#profile"><Link to="/movies">Movies</Link></Nav.Link>
+          </Nav.Item>
+        <Nav.Item>
+                <Nav.Link href="#profile"><Link to="/view-profile">View Profile</Link></Nav.Link>
+           </Nav.Item>
+           <Nav.Item>
+                <Nav.Link href="#profile"><Link to="/edit-profile">Edit Profile</Link></Nav.Link>
+           </Nav.Item>
+           <Nav.Item>
+                 <Nav.Link eventKey="#logout"> <Link onClick={this.onLoggedOut} to="/">Log out</Link></Nav.Link>
+            </Nav.Item>
+         </Nav>
+
       <div className="main-view">
+        <div className="cardGroup">
         {selectedMovie
           ? <MovieView movie={selectedMovie} OnClickBack={newSelectedMovie => { this.setMovieSelected(newSelectedMovie); }}/>
           : movies.map((movie, index) => (
             <MovieCard key={index} movie={movie} onMovieClick={(movie) => { this.setMovieSelected(movie) }}/>
+           
           ))
         }
+        </div>
       </div>
+      </Container>
     );
 
   }

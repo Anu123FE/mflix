@@ -1,0 +1,11 @@
+
+.cardGroup{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+
+  .card {
+    width: 300px !important;
+  }

@@ -1,67 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
 import MainView from './components/main-view/main-view';
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import { useState } from 'react';
 import Register from './components/register-view/register';
 import Login from './components/login-view/login';
+import { BrowserRouter, Route } from 'react-router-dom';
+import ProfileView from './components/profile-view/profile-view';
+import EditProfileView from './components/edit-profile-view/edit-profile-view';
+import GenreView from './components/genre-view/genre-view';
+import DirectorView from './components/director-view/director-view';
 
 
 
 
 function App() {
-
-  const [menuItem, setmenuItem] = useState("");
-
-  function  HeaderNav(props) {
-    return ( <Nav variant="pills" className="justify-content-end" defaultActiveKey="/home">
-    <Nav.Item>
-      <Nav.Link href="#home">Home</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="#register" onClick={()=>{
-        setmenuItem("register")
-      }}>Register</Nav.Link>
-    </Nav.Item>
-    <Nav.Item>
-      <Nav.Link eventKey="#login" onClick={()=>{
-        setmenuItem("login")
-      }}>Login</Nav.Link>
-    </Nav.Item>
-    </Nav>);
-   } 
-
-if (menuItem == "register")
-{
   return (
-    <Container>   
-      <HeaderNav></HeaderNav>
-      <Register />
-    </Container> 
-       );
-}
-else if (menuItem == "login")
-{
-  return (
-    <Container>   
-      <HeaderNav></HeaderNav>
-      <Login />
-    </Container> 
-       );
-}
-  
-else {
-  return (
-    <Container>
-      <HeaderNav></HeaderNav>   
-      <MainView />
-      </Container> 
+    <BrowserRouter>
+     <Route exact={true} path="/">
+       <Login></Login>
+     </Route>
+     <Route exact={true} path="/register">
+       <Register></Register>
+     </Route>
+     <Route exact={true} path="/movies">
+       <MainView></MainView>
+     </Route>
+     <Route exact={true} path="/view-profile">
+     <ProfileView></ProfileView>
+     </Route>
+     <Route exact={true} path="/genre/:genre">
+     <GenreView></GenreView>
+     </Route>
+     <Route exact={true} path="/director/:director">
+     <DirectorView></DirectorView>
+     </Route>
+     <Route exact={true} path="/edit-profile">
+   <EditProfileView></EditProfileView>
+     </Route>
+    </BrowserRouter>
+   
     
        );
-}
-  
-
 }
 
 export default App;
