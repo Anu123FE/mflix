@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 
 
 export class DirectorView extends React.Component {
-
+  url = 'http://localhost:3001/';
   state = {
     director : {},
     movies: []
@@ -61,7 +61,7 @@ export class DirectorView extends React.Component {
                
                 <Card>
                 <div>
-                <img width="250" height="250" src={x.ImagePath}/>
+                <img width="250" height="250" src={this.url+x.ImagePath} />
                 </div>
                <Card.Body>
                  <Card.Title>{x.Title}</Card.Title>

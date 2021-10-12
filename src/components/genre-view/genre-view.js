@@ -2,13 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import Button from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
-
+import {MovieCard1} from "../movie-card1/movie-card1";
+import Card from "react-bootstrap/Card";
 
 export class GenreView extends React.Component {
-
+  url = 'http://localhost:3001/';
   state = {
-    genre : {}
+    genre : {},
+    movies: []
   }
    genreName = window.location.href.split("/genre/")[1]
   
@@ -19,8 +20,10 @@ export class GenreView extends React.Component {
   })
     .then(response => {
       const g = response.data.find(x=>x.Genre.Name === `${this.genreName}`).Genre
+      const m = response.data.filter(x=>x.Genre.Name === `${this.genreName}`)
       this.setState({
-        genre: g
+        genre: g,
+        movies: m
       })
     })
     .catch(function (error) {
@@ -41,6 +44,28 @@ export class GenreView extends React.Component {
         <div className="genre-description">
           <span className="value">{this.state.genre.Description}</span>
         </div>
+        <br></br>
+        <h3> Movies </h3>
+        <hr />
+        <div>
+        {
+            this.state.movies.map((x)=>{
+              return (
+               
+                <Card>
+                <div>
+                <img width="250" height="250" src={this.url+x.ImagePath}/>
+                </div>
+               <Card.Body>
+                 <Card.Title>{x.Title}</Card.Title>
+                 <Card.Text>{x.Description}</Card.Text>
+               </Card.Body>
+             </Card>
+
+                )
+            })
+        }   
+       </div>
 
         <Link to="/movies">  Go Home</Link> 
 
