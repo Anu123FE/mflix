@@ -7,36 +7,38 @@ import { Link } from 'react-router-dom';
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+
 class MainView extends React.Component {
   state = {
     movies: []
   }
 
-  componentDidMount(){
+  componentWillMount(){
     fetch("https://movie-api-v001.herokuapp.com/movies")
     .then(response=>response.json())
     .then(response=>{
-      this.setState({
-        movies: response
-      });
+      this.props.setMovies([...response]);
     })
     .catch(err=>console.log(err))
   }
 
-  getMovies(token) {
-    axios.get("https://movie-api-v001.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}`}
-    })
-    .then(response => {
-      // Assign the result to the state
-      this.setState({
-        movies: response.data
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+  // getMovies(token) {
+  //   axios.get("https://movie-api-v001.herokuapp.com/movies", {
+  //     headers: { Authorization: `Bearer ${token}`}
+  //   })
+  //   .then(response => {
+  //     // Assign the result to the state
+  //     // this.setState({
+  //     //   movies: response.data
+  //     // });
+  //    
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
 
   setRegistered(register){
     this.setState({
@@ -65,8 +67,9 @@ class MainView extends React.Component {
 
 
   render() {
-    
-    const { movies, selectedMovie } = this.state;
+    console.log(this.props)
+    const { movies} = this.props;
+    const {selectedMovie} =  this.state;
 
     return (
       <Container>
@@ -103,4 +106,9 @@ class MainView extends React.Component {
   }
 }
 
-export default MainView;
+let mapStateToProps = state => {
+  console.log(state)
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies } )(MainView);

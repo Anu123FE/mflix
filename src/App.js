@@ -8,9 +8,6 @@ import EditProfileView from './components/edit-profile-view/edit-profile-view';
 import GenreView from './components/genre-view/genre-view';
 import DirectorView from './components/director-view/director-view';
 
-
-
-
 function App() {
   return (
     <BrowserRouter>
