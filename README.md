@@ -4,11 +4,12 @@ PROJECT DESCRIPTION: This app manages the server side application of the movie_a
 
 APP REQUIREMENTS: 
 Return a list of ALL movies to the user.
-Return data (description, genre, director, image URL, whether it is featured or not) about a single movie by title to the user.
-Return data about a genre (description) by name/title (e.g. "Thriller")
-Return data about a director (bio, year of birth, year of death) by name
+Return data (synopsis, genre, director, image) about a single movie by title to the user.
+Return data about a genre (description) by name along with other movies in that genre
+Return data about a director by name along with other movies directed by him/her
 Allow new users to register
 Allow users to update their user information (username, password, email, birthdate)
+Allow users to view their profile
 Allow users to add a movie to their favorites list
 Allow users to remove a movie from their favorites list
 Allow existing users to log out
