@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+PROJECT NAME: mflix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PROJECT DESCRIPTION: This app manages the server side application of the movie_api app. Provides the users information about various movies and tehir details (to be specific - the synopsis, genre, directors and poster images). Access to the app requires users to login with their usernames and passwords, after registering. Users can view the movie list and access the movie details by clicking on the movie. Users also have access to click on the genre to view more details about the genre and to see more movies belonging to that genre. They can click on the Director name to view a small bio about the director and also some of the other movies directed by him/her. Also, the users can add/remove movies to/from their favorite movie list. They can also view and edit their profile and de-register (delete) their accounts in the app.
 
-## Available Scripts
+APP REQUIREMENTS: 
+Return a list of ALL movies to the user.
+Return data (description, genre, director, image URL, whether it is featured or not) about a single movie by title to the user.
+Return data about a genre (description) by name/title (e.g. "Thriller")
+Return data about a director (bio, year of birth, year of death) by name
+Allow new users to register
+Allow users to update their user information (username, password, email, birthdate)
+Allow users to add a movie to their favorites list
+Allow users to remove a movie from their favorites list
+Allow existing users to log out
 
-In the project directory, you can run:
+APP BUILT WITH: JS, Node.js, Express, MongoDB, Mongoose
 
-### `npm start`
+APP DEPLOYED AT: https://gallant-leakey-b1c9c2.netlify.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+AUTHOR: https://anu123fe.github.io
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+SCREENSHOTS INCLUDED:
+After Login:
+<img width="1703" alt="Screen Shot 2021-10-22 at 9 19 43 PM" src="https://user-images.githubusercontent.com/80176993/138536934-f7d258cb-2e1a-43d6-841c-edec5e980865.png">
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
