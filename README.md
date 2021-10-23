@@ -16,14 +16,18 @@ Allow existing users to log out
 
 APP BUILT WITH: JS, Node.js, Express, MongoDB, Mongoose
 
-APP DEPLOYED AT: https://gallant-leakey-b1c9c2.netlify.app/
+APP DEPLOYED AT: https://gallant-leakey-b1c9c2.netlify.app
 
 AUTHOR: https://anu123fe.github.io
 
 SCREENSHOTS INCLUDED:
+
+Login Screen:
+<img width="1781" alt="Screen Shot 2021-10-22 at 9 28 03 PM" src="https://user-images.githubusercontent.com/80176993/138537213-bd443ebd-9f5c-479f-8421-2e74255512c9.png">
+
+
 After Login:
 <img width="1703" alt="Screen Shot 2021-10-22 at 9 19 43 PM" src="https://user-images.githubusercontent.com/80176993/138536934-f7d258cb-2e1a-43d6-841c-edec5e980865.png">
-
 
 
 
