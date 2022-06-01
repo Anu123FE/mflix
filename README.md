@@ -22,7 +22,7 @@
 - Allow existing users to log out
 
 # TECH USED: 
--JS
+- JS
 - Node.js
 - Express
 - MongoDB
